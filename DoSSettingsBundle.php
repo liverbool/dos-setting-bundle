@@ -8,10 +8,23 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 class DoSSettingsBundle extends AbstractResourceBundle
 {
+    /**
+     * {@inheritdoc}
+     */
     public function build(ContainerBuilder $builder)
     {
         parent::build($builder);
 
         $builder->addCompilerPass(new Compiler\RegisterSchemasPass());
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDependencyBundles()
+    {
+        return array(
+            new \Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
+        );
     }
 }
