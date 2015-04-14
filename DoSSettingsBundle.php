@@ -17,14 +17,4 @@ class DoSSettingsBundle extends AbstractResourceBundle
 
         $builder->addCompilerPass(new Compiler\RegisterSchemasPass());
     }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getDependencyBundles()
-    {
-        return array(
-            new \Sylius\Bundle\SettingsBundle\SyliusSettingsBundle(),
-        );
-    }
 }
