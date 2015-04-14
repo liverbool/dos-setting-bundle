@@ -10,11 +10,12 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "sylius/settings-bundle": "dev-master"
+        "sylius/settings-bundle": "dev-master",
+        "liverbool/dos-resource-bundle": "dev-master"
     },
     "require-dev": {
         "liil/kint": "1.0",
-        "phpspec/phpspec": "~2.1",
+        "phpspec/phpspec": "~2.1"
     },
     "autoload": {
         "psr-4": { "DoS\\SettingsBundle\\": "" }

@@ -1,0 +1,3 @@
+DoS\SettingsBundle\Model\SettingParameter:
+    type: mappedSuperclass
+    table: dos_setting_parameter

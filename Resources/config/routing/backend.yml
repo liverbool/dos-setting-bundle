@@ -1,0 +1,3 @@
+route_backend_setting:
+    resource: @DoSSettingsBundle/Resources/config/routing/backend/setting.yml
+    prefix: /settings

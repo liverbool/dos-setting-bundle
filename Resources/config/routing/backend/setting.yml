@@ -1,0 +1,8 @@
+route_backend_setting_general:
+    path: /general
+    defaults:
+        _controller: dos.controller.settings:updateAction
+        namespace: general
+        template: ui:package/backend/Settings:general.html.twig
+        _sylius:
+            redirect: route_backend_setting_general

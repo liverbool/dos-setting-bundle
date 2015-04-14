@@ -1,0 +1,17 @@
+ui.trans:
+    settings:
+        topbar: การตั้งค่า
+        general:
+            header: ตั้งค่าทั่วไป
+
+            form:
+                title: Site title
+                meta_keywords: Site keywords
+                meta_description: Site description
+                locale: ภาษา
+                currency: สกุลเงิน
+
+    breadcrumb:
+        setting: การตั้งค่า
+        settings:
+            general: ตั้งค่าทั่วไป
