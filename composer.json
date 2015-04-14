@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "sylius/settings-bundle": "0.14.*@dev",
+        "sylius/settings-bundle": "dev-master",
         "liverbool/dos-resource-bundle": "dev-master"
     },
     "require-dev": {
