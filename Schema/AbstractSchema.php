@@ -2,52 +2,35 @@
 
 namespace DoS\SettingsBundle\Schema;
 
-use DoS\SettingsBundle\Resolver\AbstractResolver;
-use DoS\SettingsBundle\Resolver\SettingsResolver;
 use Sylius\Bundle\SettingsBundle\Schema\SchemaInterface as BaseSchemaInterface;
-use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 
 abstract class AbstractSchema implements BaseSchemaInterface
 {
-    /**
-     * @var AbstractResolver
-     */
-    protected $resolver;
-
     /**
      * @var string
      */
     protected $namespace;
 
     /**
-     * @param SettingsResolver $settingsResolver
+     * @param array  $options
+     * @param string $steps
+     * @param int    $default
+     *
+     * @return int
      */
-    public function __construct(SettingsResolver $settingsResolver)
+    protected function getDefaultOptionValue(array $options, $steps, $default = 0)
     {
-        $this->resolver = $settingsResolver->get($this->getNamespace());
-    }
+        $value = $options;
+        $steps = explode('.', $steps);
 
-    /**
-     * @inheritdoc
-     */
-    public function buildSettings(SettingsBuilderInterface $builder)
-    {
-        $this->resolver->buildSettings($builder);
-    }
+        foreach ($steps as $step) {
+            if (!array_key_exists($step, $value)) {
+                return $default;
+            }
 
-    /**
-     * @param $namespace
-     */
-    public function setNamespace($namespace)
-    {
-        $this->namespace = $namespace;
-    }
+            $value = $value[$step];
+        }
 
-    /**
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->namespace;
+        return $value;
     }
 }

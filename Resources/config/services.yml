@@ -1,22 +1,13 @@
 parameters:
-    dos.settings.resolver.class: DoS\SettingsBundle\Resolver\SettingsResolver
-    dos.settings.resolver.abstract.class: DoS\SettingsBundle\Resolver\AbstractResolver
     dos.settings.schema.general.class: DoS\SettingsBundle\Schema\GeneralSettingsSchema
     dos.settings.controller.class: DoS\SettingsBundle\Controller\SettingsController
 
 services:
-    dos.settings.resolver:
-        class: %dos.settings.resolver.class%
-
-    dos.settings.resolver.abstract:
-        class: %dos.settings.resolver.abstract.class%
-        abstract: true
-        arguments:
-            - @dos.settings
 
     dos.settings.schema.general:
         class: %dos.settings.schema.general.class%
         arguments:
+            # FIXME: dos.core will not found
             - {currency: %dos.core.currency%, locale: %dos.core.locale%}
         tags:
             - {name: dos.settings_schema, namespace: general}
