@@ -17,6 +17,12 @@ class RegisterSchemasPass implements CompilerPassInterface
             return;
         }
 
+        $resolvers = $container->getDefinition('dos.settings.resolver');
+
+        foreach ($container->findTaggedServiceIds('dos.settings_resolver') as $id => $attributes) {
+            $resolvers->addMethodCall('add', array(new Reference($id)));
+        }
+
         $schemaRegistry = $container->getDefinition('sylius.settings.schema_registry');
 
         foreach ($container->findTaggedServiceIds('dos.settings_schema') as $id => $attributes) {
@@ -26,6 +32,7 @@ class RegisterSchemasPass implements CompilerPassInterface
 
             $namespace = $attributes[0]['namespace'];
 
+            $container->getDefinition($id)->addMethodCall('setNamespace', array($namespace));
             $schemaRegistry->addMethodCall('registerSchema', array($namespace, new Reference($id)));
         }
     }
