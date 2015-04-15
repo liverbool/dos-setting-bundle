@@ -2,6 +2,7 @@
 
 namespace DoS\SettingsBundle\DependencyInjection\Compiler;
 
+use DoS\SettingsBundle\Schema\AbstractSchema;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
@@ -36,7 +37,10 @@ class RegisterSchemasPass implements CompilerPassInterface
             $namespace = $attributes[0]['namespace'];
             $schema = $container->getDefinition($id);
 
-            $schema->addMethodCall('setNamespace', array($namespace));
+            if (in_array(AbstractSchema::class, class_parents($schema->getClass()))) {
+                $schema->addMethodCall('setNamespace', array($namespace));
+            }
+
             $schemaRegistry->addMethodCall('registerSchema', array($namespace, new Reference($id)));
         }
     }
