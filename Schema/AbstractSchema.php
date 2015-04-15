@@ -16,7 +16,7 @@ abstract class AbstractSchema implements BaseSchemaInterface
     /**
      * @param AbstractResolver $resolver
      */
-    public function __construct(AbstractResolver $resolver)
+    public function setResolver(AbstractResolver $resolver)
     {
         $this->resolver = $resolver;
     }
