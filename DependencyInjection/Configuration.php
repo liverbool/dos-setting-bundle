@@ -13,17 +13,14 @@ class Configuration extends AbstractResourceConfiguration
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('dos_settings');
 
-        $this->addDefaults($rootNode, 'doctrine/orm', 'default', array());
-
-        $rootNode
-            ->append($this->createResourcesSection(array(
+        $this->setDefaults($treeBuilder->root('dos_settings'), array(
+            'classes' => array(
                 'parameter' => array(
                     'model' => 'DoS\SettingsBundle\Model\SettingParameter',
                 ),
-            )))
-        ;
+            )
+        ));
 
         return $treeBuilder;
     }
