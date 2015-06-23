@@ -13,7 +13,7 @@ class DoSSettingsExtension extends AbstractResourceExtension implements PrependE
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        list($config) = $this->configure($configs, new Configuration(), $container,
+        $this->configure($configs, new Configuration(), $container,
             self::CONFIGURE_LOADER |
             self::CONFIGURE_DATABASE |
             self::CONFIGURE_PARAMETERS |
