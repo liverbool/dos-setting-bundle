@@ -10,8 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "sylius/settings-bundle": "0.15.x-dev",
-        "liverbool/dos-resource-bundle": "2.0.x-dev"
+        "sylius/settings-bundle": "0.15.*@dev",
+        "liverbool/dos-resource-bundle": "0.15.*@dev"
     },
     "require-dev": {
         "liil/kint": "1.0",
