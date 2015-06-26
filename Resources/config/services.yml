@@ -7,8 +7,7 @@ services:
     dos.settings.schema.general:
         class: %dos.settings.schema.general.class%
         arguments:
-            # FIXME: dos.core will not found
-            - {currency: %dos.core.currency%, locale: %dos.core.locale%}
+            - {currency: %currency%, locale: %locale%}
         tags:
             - {name: dos.settings_schema, namespace: general}
 
