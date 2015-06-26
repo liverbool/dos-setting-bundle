@@ -1,5 +1,5 @@
 # dos-settings
-Dosena SMS Bundle for Symfony
+Dosena Settings Bundle for Symfony
 
 [![Build Status](https://travis-ci.org/liverbool/dos-settings-bundle.svg?branch=2.0)](https://travis-ci.org/liverbool/dos-settings-bundle)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/liverbool/dos-settings-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/liverbool/dos-settings-bundle/?branch=master)
