@@ -1,6 +1,5 @@
 parameters:
     dos.settings.schema.general.class: DoS\SettingsBundle\Schema\GeneralSettingsSchema
-    dos.settings.controller.class: DoS\SettingsBundle\Controller\SettingsController
 
 services:
 
@@ -10,10 +9,6 @@ services:
             - {currency: %currency%, locale: %locale%}
         tags:
             - {name: dos.settings_schema, namespace: general}
-
-    dos.controller.settings:
-        parent: sylius.controller.settings
-        class: %dos.settings.controller.class%
 
     dos.settings:
         alias: sylius.templating.helper.settings
