@@ -34,8 +34,9 @@ class GeneralSettingsSchema implements SchemaInterface
         $builder
             ->setDefaults(array_merge(array(
                 'title'            => 'DoS - Modern dos for everyone',
-                'meta_keywords'    => 'dos, lotto, sms, money',
-                'meta_description' => 'Lotot is modern money dos for everyone',
+                'meta_keywords'    => 'DoS',
+                'meta_description' => 'DoS is modern for everyone',
+                'meta_robots'      => 'index, follow',
                 'locale'           => 'th',
                 'currency'         => 'THB',
             ), $this->defaults))
@@ -43,6 +44,7 @@ class GeneralSettingsSchema implements SchemaInterface
                 'title'            => array('string'),
                 'meta_keywords'    => array('string'),
                 'meta_description' => array('string'),
+                'meta_robots'      => array('string'),
                 'locale'           => array('string'),
                 'currency'         => array('string'),
             ))
@@ -75,6 +77,12 @@ class GeneralSettingsSchema implements SchemaInterface
             ))
             ->add('meta_description', 'textarea', array(
                 'label' => 'ui.trans.settings.general.form.meta_description',
+                'constraints' => array(
+                    new NotBlank(),
+                ),
+            ))
+            ->add('meta_robots', 'text', array(
+                'label' => 'ui.trans.settings.general.form.meta_robots',
                 'constraints' => array(
                     new NotBlank(),
                 ),
