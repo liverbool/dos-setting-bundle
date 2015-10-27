@@ -56,12 +56,6 @@ class GeneralSettingsSchema implements SchemaInterface
      */
     public function buildForm(FormBuilderInterface $builder)
     {
-        $defaultCurrency = array('THB' => 'THB');
-
-        if (isset($this->defaults['currency'])) {
-            $defaultCurrency = array($this->defaults['currency'] => $this->defaults['currency']);
-        }
-
         $builder
             ->add('title', 'text', array(
                 'label' => 'ui.trans.settings.general.form.title',
@@ -92,14 +86,6 @@ class GeneralSettingsSchema implements SchemaInterface
                 'constraints' => array(
                     new NotBlank(),
                     new Locale(),
-                ),
-            ))
-            ->add('currency', 'sylius_currency_choice', array(
-                'label' => 'ui.trans.settings.general.form.currency',
-                'choices' => $defaultCurrency,
-                'constraints' => array(
-                    new NotBlank(),
-                    new Currency(),
                 ),
             ))
         ;
