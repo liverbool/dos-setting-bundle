@@ -4,7 +4,6 @@ namespace DoS\SettingsBundle\Schema;
 
 use Sylius\Bundle\SettingsBundle\Schema\SettingsBuilderInterface;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Currency;
 use Symfony\Component\Validator\Constraints\Locale;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
@@ -33,20 +32,22 @@ class GeneralSettingsSchema implements SchemaInterface
     {
         $builder
             ->setDefaults(array_merge(array(
-                'title'            => 'DoS - Modern dos for everyone',
-                'meta_keywords'    => 'DoS',
+                'domain' => $_SERVER['HTTP_HOST'],
+                'title' => 'DoS - Modern dos for everyone',
+                'meta_keywords' => 'DoS',
                 'meta_description' => 'DoS is modern for everyone',
-                'meta_robots'      => 'index, follow',
-                'locale'           => 'th',
-                'currency'         => 'THB',
+                'meta_robots' => 'index, follow',
+                'locale' => 'th',
+                'currency' => 'THB',
             ), $this->defaults))
             ->setAllowedTypes(array(
-                'title'            => array('string'),
-                'meta_keywords'    => array('string'),
+                'domain' => array('string'),
+                'title' => array('string'),
+                'meta_keywords' => array('string'),
                 'meta_description' => array('string'),
-                'meta_robots'      => array('string'),
-                'locale'           => array('string'),
-                'currency'         => array('string'),
+                'meta_robots' => array('string'),
+                'locale' => array('string'),
+                'currency' => array('string'),
             ))
         ;
     }
@@ -57,6 +58,12 @@ class GeneralSettingsSchema implements SchemaInterface
     public function buildForm(FormBuilderInterface $builder)
     {
         $builder
+            ->add('domain', 'text', array(
+                'label' => 'ui.trans.settings.general.form.domain',
+                'constraints' => array(
+                    new NotBlank(),
+                ),
+            ))
             ->add('title', 'text', array(
                 'label' => 'ui.trans.settings.general.form.title',
                 'constraints' => array(

@@ -5,6 +5,7 @@ ui.trans:
             header: ตั้งค่าทั่วไป
 
             form:
+                domain: Domain
                 title: Site title
                 meta_keywords: Site keywords
                 meta_description: Site description
