@@ -3,6 +3,7 @@
 namespace DoS\SettingsBundle\DependencyInjection;
 
 use DoS\ResourceBundle\DependencyInjection\AbstractResourceExtension;
+use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
@@ -11,19 +12,13 @@ class DoSSettingsExtension extends AbstractResourceExtension implements PrependE
     /**
      * {@inheritdoc}
      */
-    public function load(array $configs, ContainerBuilder $container)
+    protected function getBundleConfiguration()
     {
-        $this->configure($configs, new Configuration(), $container,
-            self::CONFIGURE_LOADER |
-            self::CONFIGURE_DATABASE |
-            self::CONFIGURE_PARAMETERS |
-            self::CONFIGURE_VALIDATORS |
-            self::CONFIGURE_FORMS
-        );
+        return new Configuration();
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function prepend(ContainerBuilder $container)
     {
@@ -31,18 +26,25 @@ class DoSSettingsExtension extends AbstractResourceExtension implements PrependE
         // use the Configuration class to generate a config array with
         $config = $this->processConfiguration(new Configuration(), $configs);
 
-        foreach ($config['classes'] as &$cls) {
-            if (array_key_exists('interface', $cls)) {
-                unset($cls['interface']);
+        // no need for sylius
+        foreach ($config['resources'] as &$resources) {
+            foreach($resources as &$classes) {
+                if (array_key_exists('interface', $classes)) {
+                    unset($classes['interface']);
+                }
+
+                if (array_key_exists('form', $classes)) {
+                    unset($classes['form']);
+                }
             }
 
-            if (array_key_exists('form', $cls)) {
-                unset($cls['form']);
+            if (array_key_exists('validation_groups', $resources)) {
+                unset($resources['validation_groups']);
             }
         }
 
         $container->prependExtensionConfig('sylius_settings', array(
-            'classes' => $config['classes'],
+            'resources' => $config['resources'],
         ));
     }
 }

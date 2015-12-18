@@ -15,9 +15,11 @@ class Configuration extends AbstractResourceConfiguration
         $treeBuilder = new TreeBuilder();
 
         $this->setDefaults($treeBuilder->root('dos_settings'), array(
-            'classes' => array(
+            'resources' => array(
                 'parameter' => array(
-                    'model' => 'DoS\SettingsBundle\Model\SettingParameter',
+                    'classes' => array(
+                        'model' => 'DoS\SettingsBundle\Model\SettingParameter',
+                    ),
                 ),
             )
         ));
