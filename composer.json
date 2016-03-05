@@ -10,8 +10,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "sylius/settings-bundle": "0.17.*",
-        "liverbool/dos-resource-bundle": "0.17.*"
+        "sylius/settings-bundle": "0.18.*",
+        "liverbool/dos-resource-bundle": "0.18.*"
     },
     "require-dev": {
         "liil/kint": "1.0",
@@ -28,7 +28,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.17-dev"
+            "dev-master": "0.18-dev"
         }
     }
 }
